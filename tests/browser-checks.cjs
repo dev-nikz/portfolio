@@ -53,8 +53,8 @@ const capture=async(page,name)=>{if(output){fs.mkdirSync(output,{recursive:true}
     assert.notEqual(await page.locator('.motion-hero h1').evaluate(el=>el.getBoundingClientRect().width),oldWidth);
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     await page.setViewportSize({width:390,height:844});await page.waitForTimeout(300);
-    assert.equal(await page.evaluate(()=>document.documentElement.classList.contains('story-enhanced')),false);
-    assert.equal(await page.locator('.story-scene[inert]').count(),0);
+    assert.equal(await page.evaluate(()=>document.documentElement.classList.contains('story-enhanced')),true);
+    assert.equal(await page.locator('.story-scene[inert]').count(),3);
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
     await page.locator('.nav-toggle').click();assert.equal(await page.locator('.nav-toggle').getAttribute('aria-expanded'),'true');

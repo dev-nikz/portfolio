@@ -6,7 +6,7 @@ export const MOTION = Object.freeze({
   storyLead: .65, storyLinkStart:.12, storyLinkEnd:.32,
   processNavOffset:80,
 });
-const desktopQuery = '(min-width:900px) and (min-height:560px) and (hover:hover) and (prefers-reduced-motion:no-preference)';
+const desktopQuery = '(min-height:560px) and (prefers-reduced-motion:no-preference)';
 const positions = [[.17,.26],[.83,.25],[.17,.76],[.83,.76],[.5,-.015],[.5,1.015]];
 
 export class PortfolioMotion {
@@ -100,7 +100,9 @@ export class PortfolioMotion {
     this.enabled=this.media.matches && typeof window.IntersectionObserver === 'function';
     this.root.classList.toggle('hero-enhanced',this.enabled);
     this.root.classList.toggle('story-enhanced',this.enabled);
-    this.root.classList.toggle('process-enhanced',this.enabled);
+    this.processEnabled=this.enabled && innerWidth>=900;
+    this.root.classList.toggle('process-enhanced',this.processEnabled);
+    if(!this.processEnabled)this.steps.forEach(step=>{step.dataset.active='true';step.querySelector('button').setAttribute('aria-expanded','true');const body=step.querySelector('.step-body');body.inert=false;body.removeAttribute('aria-hidden');});
     this.activeScene=-1;this.activeStep=-1;
     if(!this.enabled){
       this.masthead.style.transform='';this.heroCopy.style.transform='';this.heroCopy.style.opacity='';
@@ -138,7 +140,7 @@ export class PortfolioMotion {
     });
   }
   selectStep(index) {
-    if(!this.enabled)return;
+    if(!this.processEnabled)return;
     this.setStep(index);
     const start=this.metrics.processTop-MOTION.processNavOffset;
     const distance=this.metrics.processHeight-this.metrics.h+MOTION.processNavOffset;
@@ -156,7 +158,8 @@ export class PortfolioMotion {
     this.setScene(sceneAt(p));
     const interactive=p>=MOTION.storyLinkStart&&p<MOTION.storyLinkEnd;
     this.cards.forEach((card,i)=>{
-      const frame=storyFrame(p,i,this.cards.length),[nx,ny]=positions[i],size=m.cards[i];
+      const mobilePositions=[[.18,.17],[.82,.17],[.18,.87],[.82,.87],[.5,-.035],[.5,1.05]];
+      const frame=storyFrame(p,i,this.cards.length),[nx,ny]=(m.w<900?mobilePositions:positions)[i],size=m.cards[i];
       const startX=m.w*.5,startY=lerp(m.h*.5,m.h*.86,frame.gather);
       const x=lerp(startX,m.w*nx,frame.spread)-m.w*.5-size.w/2;
       const cy=lerp(startY,m.h*ny,frame.spread)-m.h*.5-size.h/2;
@@ -166,7 +169,7 @@ export class PortfolioMotion {
       if(card.inert===interactive){card.inert=!interactive;card.setAttribute('aria-hidden',String(!interactive));}
     });
     const pp=range(y,m.processTop-MOTION.processNavOffset,m.processTop+m.processHeight-m.h);
-    this.setStep(processAt(pp));
+    if(this.processEnabled)this.setStep(processAt(pp));
   }
   wake=()=>{if(!this.frame&&!this.destroyed)this.frame=requestAnimationFrame(this.tick);};
   tick=time=>{

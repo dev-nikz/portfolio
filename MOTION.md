@@ -76,7 +76,7 @@ The footer is an original SVG wordmark made from letter paths. Its blur/opacity 
 
 ## Accessibility, fallback, and cleanup
 
-Long pinned sequences require a fine-hover desktop viewport at least 900px wide and 560px tall, with no reduced-motion preference and IntersectionObserver available. Other configurations use ordinary document flow. The process shows every description; all story content and project links remain available. JavaScript failure leaves the original page readable.
+The hero and story run on touch and desktop viewports at least 560px tall, with no reduced-motion preference and IntersectionObserver available. Mobile uses a shorter 480svh story and a narrow-screen thumbnail arrangement. The process remains an expanded inline sequence below 900px. Short viewports and reduced-motion settings use ordinary document flow. The process shows every description; all story content and project links remain available. JavaScript failure leaves the original page readable.
 
 Reduced-motion preference changes are handled while the page is open. Interactive hidden scenes use inert, not just opacity. The split copy is always aria-hidden, while the original text remains accessible. Images have reserved dimensions. Keyboard focus is visible. The mobile navigation supports Escape.
 

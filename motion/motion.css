@@ -73,7 +73,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid #
 .client-grid span { font-size:24px; font-weight:600; letter-spacing:-.04em; }
 .story-progress { display:none; }
 /* These classes are set only after successful initialization and viewport checks. */
-@media(min-width:900px) and (min-height:560px) and (prefers-reduced-motion:no-preference) and (hover:hover) {
+@media(min-height:560px) and (prefers-reduced-motion:no-preference) {
   .hero-enhanced .motion-hero { height:calc(var(--hero-stage-height, 100svh) + 45svh); padding:0; }
   .hero-enhanced .hero-stage { height:auto; min-height:100svh; position:sticky; top:0; padding-top:96px; padding-bottom:30px; overflow:clip; }
   .hero-enhanced .hero-masthead { will-change:transform; }
@@ -257,3 +257,22 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid #
 }
 .client-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .client-grid > span { min-width:0; }
+
+@media(max-width:899px) and (min-height:560px) and (prefers-reduced-motion:no-preference) {
+  .story-enhanced { --story-height:480svh; }
+  .story-enhanced .story-card { width:clamp(105px,29vw,200px); }
+  .story-enhanced .story-art { aspect-ratio:1.5; padding:9px; gap:5px; }
+  .story-enhanced .story-art strong { font-size:15px; }
+  .story-enhanced .story-art .brand-logo { width:90px; height:29px; padding:4px 6px; }
+  .story-enhanced .story-art .brand-logo img { max-height:21px; }
+  .story-enhanced .story-art .art-bottom { display:none; }
+  .story-enhanced .story-caption { font-size:8px; padding-top:5px; }
+  .story-enhanced .story-scene { width:86%; max-width:580px; }
+  .story-enhanced .story-scene h2 { font-size:clamp(27px,6vw,40px); }
+  .story-enhanced .story-scene p { font-size:14px; line-height:1.5; }
+  .story-enhanced .story-scene .motion-label { font-size:9px; }
+  .story-enhanced .story-progress { left:20px;right:20px;bottom:18px;font-size:9px; }
+  .story-enhanced .client-grid { margin:18px auto;padding:16px 0;gap:12px; }
+  .story-enhanced .story-link { margin-top:6px; }
+  .hero-enhanced .hero-stage { padding-top:90px; }
+}
