@@ -14,6 +14,11 @@ const capture=async(page,name)=>{if(output){fs.mkdirSync(output,{recursive:true}
     assert.equal(await page.locator('#grid > a').count(),8);
     assert.match(await page.locator('.hero-stats').innerText(),/5\.5 yrs/);
     assert.equal(await page.locator('.nav-toggle').isVisible(),false);
+    for(const height of [700,800,900]){
+      await page.setViewportSize({width:1440,height});await page.waitForTimeout(250);
+      assert.equal(await page.evaluate(()=>window.portfolioMotion.enabled&&window.portfolioMotion.heroEnabled),true,`laptop height ${height} must retain both effects`);
+    }
+    await page.setViewportSize({width:1440,height:1000});await page.waitForTimeout(250);
     const firstName=await page.locator('.hero-masthead').evaluate(el=>getComputedStyle(el).transform);
     await page.evaluate(()=>window.scrollTo({top:400,behavior:'instant'}));
     await page.waitForFunction(()=>window.portfolioMotion.scroll===window.scrollY);
@@ -55,7 +60,7 @@ const capture=async(page,name)=>{if(output){fs.mkdirSync(output,{recursive:true}
     await page.locator('.nav-toggle').click();assert.equal(await page.locator('.nav-toggle').getAttribute('aria-expanded'),'true');
     await page.keyboard.press('Escape');assert.equal(await page.locator('.nav-toggle').getAttribute('aria-expanded'),'false');
     await capture(page,'mobile');
-    await page.setViewportSize({width:1440,height:600});await page.waitForTimeout(300);
+    await page.setViewportSize({width:1440,height:500});await page.waitForTimeout(300);
     assert.equal(await page.evaluate(()=>window.portfolioMotion.enabled),false);
     await page.setViewportSize({width:1440,height:1000});await page.waitForTimeout(300);
     await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(200);

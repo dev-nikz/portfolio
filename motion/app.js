@@ -6,7 +6,7 @@ export const MOTION = Object.freeze({
   storyLead: .65, storyLinkStart:.12, storyLinkEnd:.32,
   processNavOffset:80,
 });
-const desktopQuery = '(min-width:900px) and (min-height:760px) and (hover:hover) and (prefers-reduced-motion:no-preference)';
+const desktopQuery = '(min-width:900px) and (min-height:560px) and (hover:hover) and (prefers-reduced-motion:no-preference)';
 const positions = [[.17,.26],[.83,.25],[.17,.76],[.83,.76],[.5,-.015],[.5,1.015]];
 
 export class PortfolioMotion {
@@ -112,8 +112,10 @@ export class PortfolioMotion {
     }
   }
   measure() {
-    this.heroEnabled=this.enabled && this.hero.querySelector('.hero-stage').scrollHeight<=innerHeight+2;
+    this.heroEnabled=this.enabled;
     this.root.classList.toggle('hero-enhanced',this.heroEnabled);
+    if(this.heroEnabled)this.hero.style.setProperty('--hero-stage-height',this.hero.querySelector('.hero-stage').offsetHeight+'px');
+    else this.hero.style.removeProperty('--hero-stage-height');
     if(!this.heroEnabled){this.masthead.style.transform='';this.heroCopy.style.transform='';this.heroCopy.style.opacity='';}
     const top=el=>el.getBoundingClientRect().top+window.scrollY;
     this.metrics={w:innerWidth,h:innerHeight,heroTop:top(this.hero),storyTop:top(this.story),storyHeight:this.story.offsetHeight,

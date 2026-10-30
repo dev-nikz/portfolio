@@ -27,7 +27,7 @@ No React state or per-card animation loop is involved. No canvas, WebGL, GSAP, o
 
 The name sits in a sticky hero with a perspective camera. Scrolling moves it upward and backward on the z axis. The project section has a higher stacking layer and overlaps the hero's final portion, so it passes in front of the receding name. This is layered depth, not simply translating all hero content at the same speed.
 
-The hero falls back to normal document flow if its contents cannot fit the viewport. The project overlap is only applied when hero pinning is active.
+The sticky hero sizes its wrapper from the measured content height, so laptop viewports retain parallax without clipping the introduction. The project overlap is only applied when hero pinning is active.
 
 ## Portfolio story
 
@@ -76,7 +76,7 @@ The footer is an original SVG wordmark made from letter paths. Its blur/opacity 
 
 ## Accessibility, fallback, and cleanup
 
-Long pinned sequences require a fine-hover desktop viewport at least 900px wide and 760px tall, with no reduced-motion preference and IntersectionObserver available. Other configurations use ordinary document flow. The process shows every description; all story content and project links remain available. JavaScript failure leaves the original page readable.
+Long pinned sequences require a fine-hover desktop viewport at least 900px wide and 560px tall, with no reduced-motion preference and IntersectionObserver available. Other configurations use ordinary document flow. The process shows every description; all story content and project links remain available. JavaScript failure leaves the original page readable.
 
 Reduced-motion preference changes are handled while the page is open. Interactive hidden scenes use inert, not just opacity. The split copy is always aria-hidden, while the original text remains accessible. Images have reserved dimensions. Keyboard focus is visible. The mobile navigation supports Escape.
 
