@@ -1596,11 +1596,11 @@
           <p>
             Tell me about your project or the role you’re hiring for. We can discuss the scope, the team, and how I could help.
           </p>
-          <div class="row"><a class="btn btn-ghost" href="mailto:nikzdev@gmail.com?subject=Role%20Opportunity">Discuss a role ↗</a>
+          <div class="row"><a class="btn btn-ghost" href="#enquiry" data-enquiry="role">Discuss a role ↗</a>
             <a
               class="btn btn-primary magnetic"
               id="emailCta"
-              href="mailto:nikzdev@gmail.com?subject=Project%20Enquiry"
+              href="#enquiry" data-enquiry="project"
               data-email="nikzdev@gmail.com"
             >
               Discuss a project →
@@ -1621,7 +1621,7 @@
       </div>
     </div>
 
-    <div class="footer-wordmark"><svg viewBox="0 0 555 64" aria-hidden="true" focusable="false"><path d="M0 64V0H12L36 40V0H48V64H36L12 24V64Z" transform="translate(0 0)" fill-rule="evenodd" style="--glyph-i:0"/><path d="M6 0H42V12H30V52H42V64H6V52H18V12H6Z" transform="translate(60 0)" fill-rule="evenodd" style="--glyph-i:1"/><path d="M0 0H12V25L34 0H49L22 31L50 64H34L12 38V64H0Z" transform="translate(120 0)" fill-rule="evenodd" style="--glyph-i:2"/><path d="M0 0H12V25H36V0H48V64H36V38H12V64H0Z" transform="translate(180 0)" fill-rule="evenodd" style="--glyph-i:3"/><path d="M6 0H42V12H30V52H42V64H6V52H18V12H6Z" transform="translate(240 0)" fill-rule="evenodd" style="--glyph-i:4"/><path d="M0 0H12V52H48V64H0Z" transform="translate(300 0)" fill-rule="evenodd" style="--glyph-i:5"/><path d="M0 0H23Q50 0 50 32Q50 64 23 64H0ZM12 12V52H23Q37 52 37 32Q37 12 23 12Z" transform="translate(385 0)" fill-rule="evenodd" style="--glyph-i:6"/><path d="M0 0H48V12H12V25H42V38H12V52H48V64H0Z" transform="translate(445 0)" fill-rule="evenodd" style="--glyph-i:7"/><path d="M0 0H14L25 45L36 0H50L32 64H18Z" transform="translate(505 0)" fill-rule="evenodd" style="--glyph-i:8"/></svg></div></main><footer>
+    <section class="enquiry-section wrap" id="enquiry" aria-labelledby="enquiry-heading"><p class="motion-label">Get in touch</p><h2 id="enquiry-heading">Let’s talk about your next chapter.</h2><p class="enquiry-intro">Share a role or a short project brief. A few details are enough to start.</p><form id="enquiry-form" action="/api/contact" method="post"><div class="form-trap" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div><fieldset><legend>01 / Contact details</legend><div class="form-grid"><label>Name <span>(required)</span><input name="name" autocomplete="name" maxlength="120" required placeholder="Your name"></label><label>Email <span>(required)</span><input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@company.com"></label><label class="form-full">Company<input name="company" autocomplete="organization" maxlength="160" placeholder="Company or team"></label></div></fieldset><fieldset><legend>02 / Your enquiry</legend><div class="enquiry-options"><label><input type="radio" name="type" value="project" checked> Discuss a project</label><label><input type="radio" name="type" value="role"> Discuss a role</label></div><div class="form-grid"><label>Service or role<input name="service" maxlength="160" placeholder="Frontend build, AI integration, senior engineer…"></label><label>Timeline<input name="timeline" maxlength="120" placeholder="When would you like to start?"></label><label class="form-full">Tell me about it <span>(required)</span><textarea name="message" rows="6" minlength="10" maxlength="5000" required placeholder="What are you building or hiring for? Include any useful links."></textarea></label></div></fieldset><p class="form-note">Your details will be used to respond to this enquiry. Please don’t include passwords or confidential information.</p><button class="btn btn-primary" type="submit">Send enquiry ↗</button><p id="enquiry-status" role="status" aria-live="polite"></p><p class="form-note">Prefer email? <a href="mailto:nikzdev@gmail.com">nikzdev@gmail.com</a></p></form></section><div class="footer-wordmark"><svg viewBox="0 0 555 64" aria-hidden="true" focusable="false"><path d="M0 64V0H12L36 40V0H48V64H36L12 24V64Z" transform="translate(0 0)" fill-rule="evenodd" style="--glyph-i:0"/><path d="M6 0H42V12H30V52H42V64H6V52H18V12H6Z" transform="translate(60 0)" fill-rule="evenodd" style="--glyph-i:1"/><path d="M0 0H12V25L34 0H49L22 31L50 64H34L12 38V64H0Z" transform="translate(120 0)" fill-rule="evenodd" style="--glyph-i:2"/><path d="M0 0H12V25H36V0H48V64H36V38H12V64H0Z" transform="translate(180 0)" fill-rule="evenodd" style="--glyph-i:3"/><path d="M6 0H42V12H30V52H42V64H6V52H18V12H6Z" transform="translate(240 0)" fill-rule="evenodd" style="--glyph-i:4"/><path d="M0 0H12V52H48V64H0Z" transform="translate(300 0)" fill-rule="evenodd" style="--glyph-i:5"/><path d="M0 0H23Q50 0 50 32Q50 64 23 64H0ZM12 12V52H23Q37 52 37 32Q37 12 23 12Z" transform="translate(385 0)" fill-rule="evenodd" style="--glyph-i:6"/><path d="M0 0H48V12H12V25H42V38H12V52H48V64H0Z" transform="translate(445 0)" fill-rule="evenodd" style="--glyph-i:7"/><path d="M0 0H14L25 45L36 0H50L32 64H18Z" transform="translate(505 0)" fill-rule="evenodd" style="--glyph-i:8"/></svg></div></main><footer>
       <div class="brand"><span class="dot"></span>Nikhil Dev</div>
       © 2026 · Built with React-grade care · Delhi, India
     </footer>
@@ -1630,5 +1630,5 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script type="module" src="motion/app.js"></script>
-</body>
+<script type="module" src="motion/contact.js"></script></body>
 </html>

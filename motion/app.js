@@ -72,10 +72,7 @@ export class PortfolioMotion {
     },{signal:this.signal});
     links.addEventListener('click',event=>{if(event.target.closest('a'))close();},{signal:this.signal});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){close();toggle.focus();}},{signal:this.signal});
-    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.addEventListener('click',()=>{
-      const email=a.href.replace(/^mailto:/,'').split('?')[0];
-      navigator.clipboard?.writeText(email).then(()=>{const toast=document.querySelector('#toast');if(toast){toast.textContent=`Email copied: ${email}`;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2500);}}).catch(()=>{});
-    },{signal:this.signal}));
+
   }
   observe() {
     if(typeof window.IntersectionObserver !== 'function'){
